@@ -1,0 +1,9 @@
+{% extends "admin/base.html" %}
+
+{% block title %}{{ title }} | {{ site_title|default:_('Django site admin') }}{% endblock %}
+
+{% block branding %}
+<a href="{% url 'admin:index' %}" class="navbar-brand">Site Admin</a>
+{% endblock %}
+
+{% block footer_text %}Flex. v0.9.0{% endblock %}

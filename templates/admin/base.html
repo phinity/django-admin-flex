@@ -1,0 +1,184 @@
+{% load admin_static %}
+<!DOCTYPE html>
+<html class="no-js" lang="{{ LANGUAGE_CODE|default:"en-us" }}" itemscope itemtype="http://schema.org/Article"{% if LANGUAGE_BIDI %} dir="rtl"{% endif %}>
+<!--{% block ascii %}
+FFFFFFFFFFFFFFFFFFFFFFlllllll                                       
+F::::::::::::::::::::Fl:::::l                                       
+F::::::::::::::::::::Fl:::::l                                       
+FF::::::FFFFFFFFF::::Fl:::::l                                       
+  F:::::F       FFFFFF l::::l     eeeeeeeeeeee  xxxxxxx      xxxxxxx
+  F:::::F              l::::l   ee::::::::::::ee x:::::x    x:::::x 
+  F::::::FFFFFFFFFF    l::::l  e::::::eeeee:::::eex:::::x  x:::::x  
+  F:::::::::::::::F    l::::l e::::::e     e:::::e x:::::xx:::::x   
+  F:::::::::::::::F    l::::l e:::::::eeeee::::::e  x::::::::::x    
+  F::::::FFFFFFFFFF    l::::l e:::::::::::::::::e    x::::::::x     
+  F:::::F              l::::l e::::::eeeeeeeeeee     x::::::::x     
+  F:::::F              l::::l e:::::::e             x::::::::::x    
+FF:::::::FF           l::::::le::::::::e           x:::::xx:::::x   
+F::::::::FF           l::::::l e::::::::eeeeeeee  x:::::x  x:::::x  
+F::::::::FF           l::::::l  ee:::::::::::::e x:::::x    x:::::x 
+FFFFFFFFFFF           llllllll    eeeeeeeeeeeeeexxxxxxx      xxxxxxx
+                                                                    
+{% endblock %}-->
+<head>
+    <title>{% block title %}Site Admin{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block blockbots %}<meta name="robots" content="NONE,NOARCHIVE">{% endblock %}
+    <link href="{% block bootstrap_css %}{% static "css/flex.min.css" %}{% endblock %}" rel="stylesheet">
+    <link href="{% block main_css %}{% static "css/main.min.css" %}{% endblock %}" rel="stylesheet">
+    {% block css %}{% endblock %}
+    <script type="text/javascript">window.__admin_media_prefix__ = "{% filter escapejs %}{% static "admin/" %}{% endfilter %}";</script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="{% static "js/jquery.min.js" %}"><\/script>')</script>
+    <script src="{% static "js/bootstrap.min.js" %}"></script>
+    <script src="{% static "js/main.min.js" %}"></script>
+    {% block extrahead %}{% endblock %}
+    
+</head>
+{% load i18n %}
+
+<body class="{% if is_popup %}popup {% endif %}{% block bodyclass %}{% endblock %} sfoot padding-top">
+
+
+    {% if not is_popup %}
+    <!-- Header -->
+    
+    <header class="banner" role="banner">
+      <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            {% block branding %}
+              <a href="{% url 'admin:index' %}" class="navbar-brand">Site Admin</a>
+            {% endblock %}
+          </div>
+
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+              
+              {% if user.is_active and user.is_staff %}
+              <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{% trans 'Welcome,' %} <strong>{% filter force_escape %}{% firstof user.first_name user.username %}{% endfilter %}</strong> <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                      {% if user.has_usable_password %}
+                      <li><a href="{% url 'admin:password_change' %}">{% trans 'Change password' %}</a></li>
+                      {% endif %}
+                      <li><a href="{% url 'admin:logout' %}">{% trans 'Log out' %}</a></li>
+                  </ul>
+              </li>
+              {% block logs %}
+              <li class="dropdown" id="recent-actions-module">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{% trans 'Recent Actions' %} <span class="caret"></span></a>
+                  {% load log %}
+                  {% get_admin_log 10 as admin_log for_user user %}
+                  <ul class="dropdown-menu">
+                      {% for entry in admin_log %}
+                      <li class="{% if entry.is_addition %}addlink{% endif %}{% if entry.is_change %}changelink{% endif %}{% if entry.is_deletion %}deletelink{% endif %}">
+                          <a href="{% if entry.is_deletion or not entry.get_admin_url %}{% url 'admin:index' %}{% else %}{{ entry.get_admin_url }}{% endif %}">
+                              <i class="icon-{% if entry.is_addition %}plus{% endif %}{% if entry.is_change %}edit{% endif %}{% if entry.is_deletion %}remove{% endif %}"></i>
+                              {{ entry.object_repr }}
+                              {% if entry.content_type %}
+                              <span class="mini quiet">({% filter capfirst %}{% trans entry.content_type.name %}{% endfilter %})</span>
+                              {% else %}
+                              <span class="mini quiet">({% trans 'Unknown content' %})</span>
+                              {% endif %}
+                          </a>
+                      </li>
+                      {% empty %}
+                      <li class="disabled"><a href="#">{% trans 'None available' %}</a></li>
+                      {% endfor %}
+                  </ul>
+              </li>
+              {% endblock %}
+              {% block userlinks %}
+              {% url 'django-admindocs-docroot' as docsroot %}
+              {% if docsroot %}
+              <li class="divider-vertical"></li>
+              <li><a href="{{ docsroot }}">{% trans 'Documentation' %}</a></li>
+              {% endif %}
+              {% endblock %}
+              {% endif %}
+              {% block nav-global %}{% endblock %}
+              
+            </ul>
+          </div>
+          
+        </div>
+      </nav>
+    </header>
+    
+    <!-- END Header -->
+    
+    {% endif %}
+
+<div id="wrap" class="wrap">
+<!-- Container -->
+<div class="{% block container-class %}container{% endblock %}">
+
+    <!-- Content -->
+    <div id="content">
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+                <header class="page-header clearfix">
+                  
+                  {% if not is_popup %}<div class="row">
+                      <div class="col-md-12 col-lg-12">
+                          {% block breadcrumbs %}
+                          {% endblock %}
+                      </div>
+                  </div>{% endif %}
+                  
+                    <h1 class="pull-left">
+                    {% block content_title %}
+                      {% if title %}{{ title }}{% endif %}
+                    {% endblock %}
+                    </h1>
+                    {% block object-tools %}{% endblock %}
+                </header>
+            </div>
+        </div>
+
+        {% block messages %}
+        {% if messages %}
+        <div class="row">
+            <div class="col-md-12 col-lg-12">
+                <div class="alert alert-info">
+                    <ul class="unstyled">
+                        {% for message in messages %}
+                        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        {% endblock messages %}
+
+        {% block content %}{{ content }}{% endblock %}
+        {% block sidebar %}{% endblock %}
+        {% block content_end %}{% endblock %}
+    </div>
+    <!-- END Content -->
+
+</div>
+<!-- END Container -->
+</div>
+<!-- END #wrap -->
+
+{% block footer %}<footer id="ft" class="footer footer-auto">
+    <div class="row">
+        <div class="container">
+            {% block footer_inner %}<h6>{% block footer_text %}Flex v0.9.0{% endblock %}</h6>{% endblock %}
+        </div>
+    </div>
+</footer>{% endblock %}
+
+{% block body_end %}{% endblock %}
+</body>
+</html>

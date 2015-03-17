@@ -1,0 +1,59 @@
+<fieldset class="_module _aligned col-sm-12 col-md-12 col-lg-12 well" id="fieldset-{{ forloop.counter }}">
+    {% if fieldset.name %}
+    <legend>
+        {% if 'collapse' in fieldset.classes %}
+        <a data-toggle="collapse" data-target="#fieldset-{{ forloop.counter }} .fields">
+        {% endif %}
+        {{ fieldset.name }}
+        {% if 'collapse' in fieldset.classes %}
+        &nbsp;<span class="btn btn-default btn-xs"><i class="glyphicon glyphicon-resize-full"></i></span>
+        </a>
+        {% endif %}
+    </legend>
+    {% endif %}
+    <div class="fields {% if not errors %}{{ fieldset.classes }}{% endif %}">
+    {% if fieldset.description %}
+        <div class="description">{{ fieldset.description|safe }}</div>
+    {% endif %}
+    {% for line in fieldset %}
+        <div class="form-group {% if line.fields|length_is:'1' and line.errors %} has-error{% endif %}{% for field in line %}{% if field.field.name %} field-{{ field.field.name }}{% endif %}{% endfor %}">
+            {% for field in line %}
+                <div{% if not line.fields|length_is:'1' %} class="field-box{% if field.field.name %} field-{{ field.field.name }}{% endif %}{% if not field.is_readonly and field.errors %} errors{% endif %}"{% endif %}>
+                    {% if field.is_checkbox %}
+                    <div class="controls">
+                        <div class="checkbox row">
+                            <div class="control-label col-lg-2 col-md-3 col-sm-3">
+                                {{ field.label_tag }}
+                            </div>
+                            <div class="form-control-static col-lg-10 col-md-9 col-sm-9">
+                                {{ field.field }}
+                            </div>
+                        </div>
+                    </div>
+                    
+                    {% else %}
+                        <div class="control-label col-lg-2 col-md-3 col-sm-3">
+                            {{ field.label_tag }} 
+                            
+                            {{ field.field.widget }}
+                        </div>
+                        <div class="form-control-static col-lg-10 col-md-9 col-sm-9">
+                            {% if field.is_readonly %}
+                                {% block field_readonly_contents %}
+                                <p>{{ field.contents }}</p>
+                                {% endblock %}
+                            {% else %}
+                                {{ field.field }}
+                            {% endif %}
+                            {% if not field.is_readonly and field.errors %}<span class="help-inline">{{ field.errors|striptags }}</span>{% endif %}
+                            {% if field.field.help_text %}
+                                <span class="help-block">{{ field.field.help_text|safe }}</span>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    {% endfor %}
+    </div>
+</fieldset>

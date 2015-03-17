@@ -1,0 +1,16 @@
+*.log
+*.pot
+local_settings.py
+.idea
+.Python
+*.swp
+bin/
+lib/
+include/
+*.pyc
+repdb/media/*
+.DS_Store
+.elasticbeanstalk/
+src/
+node_modules/
+bower_components/

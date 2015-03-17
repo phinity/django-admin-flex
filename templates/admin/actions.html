@@ -1,0 +1,17 @@
+{% load i18n %}
+<div class="row">
+    <div class="col-sm-12 navbar-left">
+        <div class="form-inline pull-left">
+            <div class="form-group clearfix">
+                {% for field in action_form %}{% if field.label = "Action:" %}<div class="selectpicker pull-left">{{ field }}</div>{% else %}{{ field }}{% endif %}{% endfor %}
+                <div class="pull-left h-input-btn">
+                  <button type="submit" class="btn btn-default" title="{% trans "Run the selected action" %}" name="index" value="{{ action_index|default:0 }}">{% trans "Go" %}</button>
+            {% if actions_selection_counter %}
+                  <script type="text/javascript">var _actions_icnt="{{ cl.result_list|length|default:"0" }}";</script>
+                  <span class="action-counter">{{ selection_note }}</span>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>

@@ -1,0 +1,212 @@
+@import (reference) "../../bower_components/bootstrap/less/variables.less";
+@import "../../bower_components/bootstrap/less/glyphicons.less";
+
+.change-list .filtered {
+    background: #fff !important;
+}
+
+.change-list .filtered {
+  min-height: 10px !important;
+  .results, .paginator {
+    margin-right: 0 !important;
+  }
+}
+
+.filtered {
+  #toolbar, div.xfull {
+    margin-right: 0 !important;
+  }
+}
+
+.navbar-header {
+  @media (max-width: @screen-sm) {
+    float: none;
+  }
+}
+
+.popup {
+  .page-header {
+    margin-top: 0;
+  }
+}
+.page-header {
+  @media (max-width: @screen-sm) {
+    margin-top: 0;
+  }
+  h1 {
+    margin-top: 0;
+  }
+}
+
+#result_list > thead > tr > th.sortable.column-created {
+    min-width: 120px;
+}
+
+#result_list > tbody > tr > td {
+    table-layout: fixed;
+    max-width: 150px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.dropdown-filter {
+    .dropdown-menu {
+        max-width: 450px;
+        min-width: 300px;
+        padding: 0 0 10px 0;
+        &>li {
+            &>a {
+                white-space: normal;
+            }
+            &.nav-header {
+                padding-top: 12px;
+                &>span,
+                &>a {
+                    padding: 3px 20px;
+                    display: block;
+                }
+            }
+            &.li-paded {
+                padding: 3px 0 3px 20px;
+                display: block;
+            }
+        }
+    }
+}
+
+
+.form-group {
+  select,
+  textarea,
+  input[type="text"],
+  input[type="password"],
+  input[type="datetime"],
+  input[type="datetime-local"],
+  input[type="date"],
+  input[type="month"],
+  input[type="time"],
+  input[type="week"],
+  input[type="number"],
+  input[type="email"],
+  input[type="url"],
+  input[type="search"],
+  input[type="tel"],
+  input[type="color"] {
+    width: auto;
+    display: inline;
+  }
+}
+
+.radio input[type=radio], 
+.radio-inline input[type=radio], 
+.checkbox input[type=checkbox], 
+.checkbox-inline input[type=checkbox] {
+  margin-left: 5px;
+  margin-top: 10px;
+}
+
+a.add-another {
+    text-decoration: none;
+    padding-left: 7px;
+}
+
+footer {
+  margin-top: 40px;
+  min-height: 60px;
+  padding: 10px 0;
+}
+
+.row-fixed {
+    min-height: 40px;
+    .fixed-actions {
+        text-align: right;
+        right: 0;
+        padding: 10px 20px;
+        margin: 0 !important;
+        right: 0;
+        left: 0;
+        opacity: .8;
+    }
+}
+
+.form-control-static {
+    .selector {
+        max-width: 100%;
+        ul.selector-chooser {
+            margin-top: 5em;
+        }
+        h2 {
+            margin-bottom: 0;
+            font-size: 16px;
+            line-height: 24px;
+        }
+        .selector-available, .selector-chosen {
+            width: 45%;
+            input {
+                max-width: 100%;
+                display: inline;
+                &[placeholder='Filter'] {
+                    max-width: 90%;
+                }
+            }
+            select {
+                max-width: 100%;
+            }
+        }
+    }
+}
+
+
+fieldset legend {
+    float: left;
+}
+
+
+.navbar-nav { 
+  li {
+      display: block;
+  }
+}
+
+
+.datetime {
+    margin-bottom: 10px;
+    input[type='text'] {
+        display: inline;
+        margin-bottom: 10px;
+    }
+}
+
+.calendarbox, .clockbox {
+    z-index: 9999;
+    border: 2px solid #ccc;
+    background-color: #fff;
+}
+
+.search-query + .btn,
+.styled-select + .btn,
+.h-input-btn {
+    margin-left: 8px;
+    margin-right: 8px;
+}
+
+.container, .container-fluid {
+    .form-group {
+        margin-bottom: 10px;
+    }
+}
+
+.table {
+    td.original {
+        min-width: 150px;
+        p {
+            font-size: 14px;
+        }
+    }
+    td.field-value {
+        max-width: 250px;
+        textarea {
+            height: 100px !important;
+        }
+    }
+}
