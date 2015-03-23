@@ -31,7 +31,7 @@ Enable template customizations by adding a `TEMPLATE_DIRS` tuple to your setting
 Any html template added to the `admin` directory within your configured `templates` directory will override the default templates. It is recommended to create a `admin/base_site.html` file for basic customizations. Here is an example of that file:
 
     {% extends "admin/base.html" %}
-    {% load i18n %}{% load admin_static %}
+    {% load i18n admin_static %}
     {% block title %}Site Admin{% endblock %}
     {% block footer_text %}Site Admin{% endblock %}
 
@@ -39,11 +39,11 @@ To add a custom bootstrap theme, point to your css file within the `bootstrap_cs
 
     {% block bootstrap_css %}{% static "css/bento-box.min.css" %}{% endblock %}
 
-there are many other blocks available in useful locations in the templates. Any other admin wide customizations can be made in your `base_site.html` file while other specific pages can be overriden and/or extended.
+There are many other blocks available in useful locations in the templates. Any other admin wide customizations can be made in your `base_site.html` file while other specific pages can be overriden and/or extended.
 
 ## Issues and Contribution
 
 Feel free to report any issues or sugestions. Please include instruction for reproducing any issue, a screenshot may be helpful.
 
-Pull requests are very welcome! Please be clear about what is being updated and how it can be reviewed in the interface.
+Pull requests are welcomed! Please be clear about what is being updated and how it can be reviewed in the interface.
 

@@ -1,6 +1,9 @@
 {% extends "admin/base.html" %}
+{% load i18n admin_static %}
 
 {% block title %}{{ title }} | {{ site_title|default:_('Django site admin') }}{% endblock %}
+
+{% block bootstrap_css %}{% static "css/bento-box.min.css" %}{% endblock %}
 
 {% block branding %}
 <a href="{% url 'admin:index' %}" class="navbar-brand">Site Admin</a>
