@@ -1,9 +1,16 @@
 {% extends "admin/base.html" %}
-{% load i18n admin_static %}
+{% load i18n static %}
 
 {% block title %}{{ title }} | {{ site_title|default:_('Django site admin') }}{% endblock %}
 
-{% block bootstrap_css %}{% static "css/bento-box.min.css" %}{% endblock %}
+{% block css %}
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Lora' rel='stylesheet' type='text/css'>
+{% endblock %}
+
+{% block bootstrap_css %}
+  {% static "css/bento-box.min.css" %}
+{% endblock %}
 
 {% block branding %}
 <a href="{% url 'admin:index' %}" class="navbar-brand">Site Admin</a>

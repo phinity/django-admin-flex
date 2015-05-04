@@ -2,21 +2,21 @@
 <!DOCTYPE html>
 <html class="no-js" lang="{{ LANGUAGE_CODE|default:"en-us" }}" itemscope itemtype="http://schema.org/Article"{% if LANGUAGE_BIDI %} dir="rtl"{% endif %}>
 <!--{% block ascii %}
- ,dPYb,  ,dPYb,                       
- IP'`Yb  IP'`Yb                       
- I8  8I  I8  8I                       
- I8  8'  I8  8'                       
+ ,dPYb,  ,dPYb,
+ IP'`Yb  IP'`Yb
+ I8  8I  I8  8I
+ I8  8'  I8  8'
  I8 dP   I8 dP   ,ggg,      ,gg,   ,gg
  I8dP    I8dP   i8" "8i    d8""8b,dP" 
  I8P     I8P    I8, ,8I   dP   ,88"   
 ,d8b,_  ,d8b,_  `YbadP' ,dP  ,dP"Y8,  
-PI8"88888P'"Y88888P"Y8888"  dP"   "Y88
- I8 `8,                               
- I8  `8,                              
- I8   8I                              
- I8   8I                              
- I8, ,8'                              
-  "Y8P'                               
+PI8"88888P'"Y88888P"Y8888"  dP"   "Y88!
+ I8 `8,
+ I8  `8,
+ I8   8I
+ I8   8I
+ I8, ,8'
+  "Y8P'
 {% endblock %}-->
 <head>
     <title>{% block title %}Site Admin{% endblock %}</title>
@@ -169,9 +169,9 @@ PI8"88888P'"Y88888P"Y8888"  dP"   "Y88
 </div>
 <!-- END #wrap -->
 
-{% block footer %}<footer id="ft" class="footer footer-auto">
+{% block footer %}<footer id="ft" class="container-fluid footer footer-auto">
     <div class="row">
-        <div class="container">
+        <div class="col-sm-12">
             {% block footer_inner %}<h6>{% block footer_text %}Flex v0.9.0{% endblock %}</h6>{% endblock %}
         </div>
     </div>

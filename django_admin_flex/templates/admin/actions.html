@@ -3,7 +3,7 @@
     <div class="col-sm-12 navbar-left">
         <div class="form-inline pull-left">
             <div class="form-group clearfix">
-                {% for field in action_form %}{% if field.label = "Action:" %}<div class="selectpicker pull-left">{{ field }}</div>{% else %}{{ field }}{% endif %}{% endfor %}
+                {% for field in action_form %}{% if field.label = "Action:" %}<div class="selectpicker pull-left styled-select">{{ field }}</div>{% else %}{{ field }}{% endif %}{% endfor %}
                 <div class="pull-left h-input-btn">
                   <button type="submit" class="btn btn-default" title="{% trans "Run the selected action" %}" name="index" value="{{ action_index|default:0 }}">{% trans "Go" %}</button>
             {% if actions_selection_counter %}
