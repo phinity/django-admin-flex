@@ -7,13 +7,13 @@ An admin theme for Django >= 1.6 setup for Bootstrap 3.
 About
 =====
 
-Included is a vanilla version of Bootstrap 3 as well as a customized Bootstrap 3 theme that can be used, or use your own bootstrap theme to match the style of your front-end site (see customization instructions below).
+A set of Django Admin html templates curated for Bootstrap 3. Included is vanilla Bootstrap as well as a custom theme that is active by default to alleviate your fugly django-admin plight. Use your own Bootstrap theme to match the style of your front-end site (see customization instructions below).
 
 Features
 ========
 
 * Rock solid admin templates that can be used with any Bootstrap theme
-* Two no-clutter themes included: "Bootstrap's Vanilla" and Bento-box
+* Two no-clutter themes included: "Bootstrap's Vanilla" and Bento-box (active by default)
 * Full/fluid width listing page for content heavy admins
 * Always-visible change form actions
 * No fuss: these templates will fit in nicely with your existing Django-admin workflow.
@@ -25,10 +25,19 @@ Install with pip ``pip install django-admin-flex`` or ``pip install http://githu
 
 Add `'django_admin_flex',`` to your "INSTALLED_APPS" **before** `'django.contrib.admin'``
 
+Customizing CSS
+===============
+
+NPM, Bower and Grunt are used to compile a mininimal set of styles for the admin that Bootstrap doesn't handle. To compile any customizations made to ``static/less/main.less`` or ``static/less/flex.less``, run:
+
+  ``npm install``
+  ``bower install``
+  ``grunt``
+
 Customization
 =============
 
-Enable template customizations by adding a ``TEMPLATE_DIRS`` tuple to your settings file that points to a template directory where you would like any admin override templates to be located. For example a ``templates`` folder in your root directory:
+Enable template customizations by adding a ``TEMPLATE_DIRS`` tuple to your settings file which points to a template directory where you would like any admin override templates to be located. For example a ``templates`` folder in your root directory:
 
 .. code-block:: python
 
@@ -45,7 +54,7 @@ Any html template added to the ``admin`` directory within your configured ``temp
     {% block title %}Site Admin{% endblock %}
     {% block footer_text %}Site Admin{% endblock %}
 
-To add a custom bootstrap theme, point to your css file within the ``bootstrap_css`` block in your ``base_site.html`` file. Here is an example that will use the alternative bootstrap theme provided but you can use any bootstrap theme you would like:
+To add a custom Bootstrap theme, point to your css file within the ``bootstrap_css`` block in your ``base_site.html`` file. Here is an example that will use the alternative Bootstrap theme provided but you can use any Bootstrap theme you would like:
 
 .. code-block:: html
 
@@ -56,7 +65,7 @@ There are many other blocks available in useful locations in the templates. Any 
 Issues and Contribution
 =======================
 
-Feel free to report any issues or sugestions. Please include instruction for reproducing any issue, a screenshot may be helpful.
+Feel free to report any issues or suggestions. Please include instruction for reproducing any issues - a screenshot may be helpful.
 
 Pull requests are welcomed! Please be clear about what is being updated and how it can be reviewed in the interface.
 
