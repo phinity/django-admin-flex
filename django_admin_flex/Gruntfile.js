@@ -1,7 +1,7 @@
 module.exports = function(grunt) {
 
   grunt.initConfig({
-    assetsPath: "static/",
+    assetsPath: "static/flex/",
     bowerPath: "bower_components/",
     lessPath: "<%= assetsPath %>less/",
     cssPath: "<%= assetsPath %>css/",

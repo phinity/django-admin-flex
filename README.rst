@@ -49,7 +49,7 @@ To add a custom bootstrap theme, point to your css file within the ``bootstrap_c
 
 .. code-block:: html
 
-    {% block bootstrap_css %}{% static "css/bento-box.min.css" %}{% endblock %}
+    {% block bootstrap_css %}{% static "css/your-bootstrap-theme.min.css" %}{% endblock %}
 
 There are many other blocks available in useful locations in the templates. Any other admin wide customizations can be made in your ``base_site.html`` file while other specific pages can be overriden and/or extended.
 

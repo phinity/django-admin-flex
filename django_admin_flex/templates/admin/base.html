@@ -22,14 +22,14 @@ PI8"88888P'"Y88888P"Y8888"  dP"   "Y88!
     <title>{% block title %}Site Admin{% endblock %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% block blockbots %}<meta name="robots" content="NONE,NOARCHIVE">{% endblock %}
-    <link href="{% block bootstrap_css %}{% static "css/flex.min.css" %}{% endblock %}" rel="stylesheet">
-    <link href="{% block main_css %}{% static "css/main.min.css" %}{% endblock %}" rel="stylesheet">
+    <link href="{% block bootstrap_css %}{% static "flex/css/flex.min.css" %}{% endblock %}" rel="stylesheet">
+    <link href="{% block main_css %}{% static "flex/css/main.min.css" %}{% endblock %}" rel="stylesheet">
     {% block css %}{% endblock %}
     <script type="text/javascript">window.__admin_media_prefix__ = "{% filter escapejs %}{% static "admin/" %}{% endfilter %}";</script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="{% static "js/jquery.min.js" %}"><\/script>')</script>
-    <script src="{% static "js/bootstrap.min.js" %}"></script>
-    <script src="{% static "js/main.min.js" %}"></script>
+    <script>window.jQuery || document.write('<script src="{% static "flex/js/jquery.min.js" %}"><\/script>')</script>
+    <script src="{% static "flex/js/bootstrap.min.js" %}"></script>
+    <script src="{% static "flex/js/main.min.js" %}"></script>
     {% block extrahead %}{% endblock %}
     
 </head>
