@@ -10,7 +10,7 @@ readme = textwrap.dedent(open(os.path.join(ROOT, 'README.rst')).read())
 
 setup(
     name='django_admin_flex',
-    version='0.0.1',
+    version='0.0.2',
     author='Ben Korody',
     author_email='ibben@gmail.com',
     license='MIT',
